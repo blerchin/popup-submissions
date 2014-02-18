@@ -1,0 +1,19 @@
+<h1>Now, add info for each piece.</h1>
+
+<%= form_for @artist do |artist_form| %>
+	<%= render "edit_toolbar" %>
+	<% @artist.submissions.each do |submission| %>
+		<div class="submission submission-<%=submission.id%> pull-left">
+			<img src = "<%= submission.slide.thumb %>" />
+			<% # doing it the Rails way %>
+			<%= artist_form.fields_for :submissions, submission do |f| %>
+				<%= render "form_fields", :f => f  %>
+				<%= f.label :delete %>
+				<%= check_box_tag "delete", 1, false %> 
+			<% end %>
+		</div>
+	<% end %>
+	<%= render "edit_toolbar" %>
+<% end %>
+
+<br>

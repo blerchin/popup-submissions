@@ -5,7 +5,7 @@ class SubmissionsController < ApplicationController
   # GET /submissions
   # GET /submissions.json
   def index
-    @submissions = Submission.all
+		render 'bulk_edit'
   end
 
   # GET /submissions/1
@@ -68,7 +68,7 @@ class SubmissionsController < ApplicationController
       @submission = Submission.find(params[:id])
     end
 		def set_artist
-			@artist = current_artist
+			@artist = params[:artist_id] ? Artist.find(params[:artist_id]) : current_artist
 		end
 
     # Never trust parameters from the scary internet, only allow the white list through.

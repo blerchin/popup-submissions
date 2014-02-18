@@ -1,5 +1,18 @@
+<h2>Artist Details</h2>
 <p id="notice"><%= notice %></p>
 <p id="name">Name: <%=@artist.first_name %> <%= @artist.last_name %></p>
+<p id="email">Email: <%=@artist.email %></p>
+<div id="address">
+	<p>Contact Address: </p>
+	<%=@artist.contact_address_one %><br />
+	<%=@artist.contact_address_two %><br />
+	<%=@artist.contact_city %>, <%= @artist.contact_state %> 
+	<%=@artist.contact_postal%><br />
+</div>
+<div class="actions">
+	<%= button_to 'Edit Info', edit_artist_path(@artist) %>
+</div>
 
-<%= link_to 'Edit', edit_artist_path(@artist) %> |
-<%= link_to 'Back', artists_path %>
+<% @submissions = @artist.submissions %>
+<%= render template: 'submissions/index' %>
+

@@ -4,7 +4,7 @@ class Artist < ActiveRecord::Base
 
 	has_many :submissions
 
-
+	accepts_nested_attributes_for :submissions
 
 	def set_status_pending
 		self.status = "pending"

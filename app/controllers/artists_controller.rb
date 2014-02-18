@@ -77,7 +77,7 @@ class ArtistsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def artist_params
-      params[:artist].permit(:first_name, :last_name, :email, :phone, :contact_city, :contact_state, :contact_postal, :contact_address_one, :contact_address_two, :status)
+      params[:artist].permit(:first_name, :last_name, :email, :phone, :contact_city, :contact_state, :contact_postal, :contact_address_one, :contact_address_two, :status, :submissions_attributes => [ :id, :title, :medium, :year, :price, :delete])
     end
 
   	def save_session_login

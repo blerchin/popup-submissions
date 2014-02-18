@@ -1,19 +1,14 @@
-<h1>Listing submissions</h1>
-
-<% @submissions.each do |submission| %>
-	<div class="submission submission-<%=submission.id%> pull-left">
-		<td><img src = "<%= submission.slide.thumb %>" /></td>
-		<!--
-		<td><%= link_to 'Show', submission %></td>
-		<td><%= link_to 'Edit', edit_submission_path(submission) %></td>
-		-->
-		<p><%= link_to 'Delete', submission, method: :delete, data: { confirm: 'Are you sure?' } %></p>
-		<%= form_for(submission) do |f| %>
-			<%= render "form_fields", :f => f  %>
-		<% end %>
+<div class="submissions artist submissions">
+	<h4>Submissions</h4>
+	<div class="navbar">
+		<%= button_to "Add Images", new_artist_submission_path(@artist) %>
+		<%= button_to "Bulk Edit Images", artist_submissions_path(@artist) %>
 	</div>
-<% end %>
-
-<br>
-
-<%= link_to 'New Submission', new_submission_path %>
+	<% @submissions.each do |submission| %>
+		<%= link_to submission do |link| %>
+			<img class="submission submission-<%= submission.id %>"
+				src="<%= submission.slide.thumb %>" />
+		<% end %>
+	<% end %>
+			
+</div>
