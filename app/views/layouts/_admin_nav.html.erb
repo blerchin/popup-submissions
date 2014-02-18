@@ -1,0 +1,8 @@
+	<%= nav_bar :fixed => :top, :brand => "wallaPopUp" do %>
+		<% admin_only do %>
+			<%= menu_group do %>
+				<%= menu_item "Artists", artists_path %>
+				<%= menu_item "Jury", submissions_path %>
+			<% end %>
+		<% end %>
+	<% end %>

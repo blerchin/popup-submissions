@@ -5,6 +5,7 @@ FullView::Application.routes.draw do
 		resources :submissions
 	end
 	get 'artists/load/:access_token' => 'artists#load'
+	root :to => "artists#new"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -2,18 +2,15 @@ class ArtistsController < ApplicationController
   before_action :set_artist, only: [:show, :edit, :update, :destroy]
 	after_action :save_session_login, only: [:create]
 
+	before_action :set_artist, except: [:new, :create]
+	#before_action :artist_auth, except: [:new, :create]
+
   # GET /artists
   # GET /artists.json
   def index
     @artists = Artist.all
   end
 	
-	# GET /artists/load/:access_token
-	def load
-		@artist = Artist.where( :access_token => params[:access_token]).take
-		save_session_login
-		redirect_to @artist
-	end
 
   # GET /artists/1
   # GET /artists/1.json
@@ -36,6 +33,7 @@ class ArtistsController < ApplicationController
 
     respond_to do |format|
       if @artist.save
+				ArtistMailer.signup_email(@artist).deliver
         format.html { redirect_to @artist, notice: 'Artist was successfully created.' }
         format.json { render action: 'show', status: :created, location: @artist }
       else
@@ -80,8 +78,25 @@ class ArtistsController < ApplicationController
       params[:artist].permit(:first_name, :last_name, :email, :phone, :contact_city, :contact_state, :contact_postal, :contact_address_one, :contact_address_two, :status, :submissions_attributes => [ :id, :title, :medium, :year, :price, :delete])
     end
 
+		def set_artist 
+			#unless artist is viewing her own profile, 
+			#she must be logged in as an admin user
+			@artist = current_artist
+			if params[:access_token]
+				@artist = Artist.where(
+											:access_token => params[:access_token],
+											:id => params[:id]).take
+				session[:current_artist_id] = @artist.id
+			end
+
+			unless params[:id] && params[:id].to_i == @artist.try(:id)
+				authenticate
+				@artist = Artist.find(params[:id])
+			end
+		end
+
   	def save_session_login
-  		session[:current_artist_id] = @artist.id
+			session[:current_artist_id] = @artist.id
   	end
 
 end

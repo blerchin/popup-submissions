@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+		<h1>wallaPopUp</h1>
+		<h3>Thanks <%= @artist.first_name %>, we've received your submission. Please read the following.</h3>
+    <p>
+		In case you decide to submit more work, or run into trouble while uploading photos, you can log in at any time before the submission deadline to make changes. You must <b>save this email</b> in order to make changes later.
+    </p>
+    <p>
+			There is no username or password, to pick up where you left off, just visit this address:
+    </p>
+		<p>
+			<%= link_to @login_url, @login_url %>
+		</p>
+    <p>Thanks for your interest! We'll be in touch shortly</p>
+		
+		<p>Thanks,<br />
+			wallaPopUp
+		</p>
+  </body>
+	</html>

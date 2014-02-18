@@ -14,5 +14,10 @@ module ApplicationHelper
 		args[2][:class] = "btn" 
 		link_to *args
 	end
+	def admin_only
+		if is_admin?
+			yield
+		end
+	end
 
 end

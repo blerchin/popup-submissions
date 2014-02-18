@@ -69,6 +69,9 @@ class SubmissionsController < ApplicationController
     end
 		def set_artist
 			@artist = params[:artist_id] ? Artist.find(params[:artist_id]) : current_artist
+			if @artist != current_artist
+				authenticate
+			end
 		end
 
     # Never trust parameters from the scary internet, only allow the white list through.
