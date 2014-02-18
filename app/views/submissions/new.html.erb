@@ -1,0 +1,8 @@
+<h1>Thanks, now for your art.</h1>
+<h3>Please upload up to 10 images representative of the work you do and what you would like to show in the next popup Gallery.</h3>
+
+<%= render 'uploader' %>
+
+<%= link_to 'Looks Good', artist_submissions_path(@artist),
+										:class => 'btn btn-large btn-primary' %>
+<%= link_to 'Back', submissions_path %>

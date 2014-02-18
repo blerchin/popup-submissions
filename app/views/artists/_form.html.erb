@@ -1,0 +1,49 @@
+<%= form_for(@artist) do |f| %>
+  <% if @artist.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@artist.errors.count, "error") %> prohibited this artist from being saved:</h2>
+
+      <ul>
+      <% @artist.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+	<div class="form-section">
+		<%= f.label :first_name %>
+		<%= f.text_field :first_name %>
+	</div>
+	<div class="form-section">
+		<%= f.label :last_name %>
+		<%= f.text_field :last_name %>
+	</div>
+	<div class="form-section">
+		<%= f.label :email %>
+		<%= f.text_field :email %>
+	</div>
+	<div class="form-section">
+		<%= f.label "Address" %>
+		<%= f.text_field :contact_address_one %>
+	</div>
+	<div class="form-section">
+		<%= f.label "Address" %>
+		<%= f.text_field :contact_address_two %>
+	</div>
+	<div class="form-section">
+		<%= f.label "City" %>
+		<%= f.text_field :contact_city %>
+	</div>
+	<div class="form-section">
+		<%= f.label "State" %>
+		<%= f.text_field :contact_state %>
+	</div>
+	<div class="form-section">
+		<%= f.label "Zip Code" %>
+		<%= f.text_field :contact_postal %>
+	</div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
