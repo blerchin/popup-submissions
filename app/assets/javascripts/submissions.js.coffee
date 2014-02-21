@@ -5,7 +5,7 @@
 
 Dropzone.options.submissionsUploader =
 	maxFilesize: 10
-	maxFiles: 2
+	maxFiles: 10
 	addRemoveLinks: true
 	removedfile: (f)->
 		console.log "removed file", f

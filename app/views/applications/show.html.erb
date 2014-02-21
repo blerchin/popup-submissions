@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p class="lead">OK, now we need you to upload images of your work. These images should be representative of the body of work you wish to display. However, this doesn't need to be a complete listing. We will review up to 10 images.</p>
+<p>
+  <strong>Exhibition:</strong>
+  <%= @application.exhibition.name %>
+</p>
+
+<p>
+  <strong>Artist:</strong>
+  <%= @application.artist.first_name %> 
+	<%= @application.artist.last_name %>
+</p>
+
+<%= render 'submissions/uploader' %>
+
+
+<%= link_to 'Back', artist_path(@artist) %>
+<%= button_to "Save Images", edit_application_path(@application) %>
+<div class="row">
+	<h3>Uploaded Images</h3>
+	<p>Here is the work you've uploaded so far. You may upload more images using the box above, or add more information about the work. Click an image to view large or delete it.</p>
+	<%= button_to "Edit Image Info", edit_application_path(@application) %>
+	<div class="uploaded-images">
+		<%= render partial: 'submissions/submissions_module', locals: { 
+						:object => @application	} %>
+	</div>
+</div>
+
+<div class="row actions">
+	<%= link_to "Finish Application", @artist, 
+		:class => "btn btn-large btn-primary" %>
+</div>
+

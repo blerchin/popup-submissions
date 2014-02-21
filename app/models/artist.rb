@@ -2,9 +2,9 @@ class Artist < ActiveRecord::Base
 	before_create :set_status_pending
 	before_create :save_access_token
 
-	has_many :submissions
+	has_many :applications
+	has_many :installations
 
-	accepts_nested_attributes_for :submissions
 
 	def set_status_pending
 		self.status = "pending"

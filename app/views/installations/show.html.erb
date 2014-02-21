@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Exhibition:</strong>
+  <%= @installation.exhibition %>
+</p>
+
+<p>
+  <strong>Artist:</strong>
+  <%= @installation.artist %>
+</p>
+
+<%= link_to 'Edit', edit_installation_path(@installation) %> |
+<%= link_to 'Back', installations_path %>

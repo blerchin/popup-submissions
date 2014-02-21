@@ -1,5 +1,18 @@
 <p id="notice"><%= notice %></p>
-<td><img src = "<%= @submission.slide.medium %>" /></td>
+<div class="row">
+	<div class="span8">
+		<img src = "<%= @submission.slide.medium %>" />
+	</div>
+	<div class="span4">
+		<p><strong>
+			<%= @submission.title %>
+			<%=", #{@submission.year}" unless @submission.year.nil? %>
+		</strong></p>
+		<p><%= @submission.medium %></p>
+		<p><%= @submission.price.nil? ? "" : "$#{@submission.price}"  %></p>
+	</div>
+</div>
 
-<%= link_to 'Edit', edit_submission_path(@submission) %> |
-<%= link_to 'Back', submissions_path %>
+<%= link_to 'Edit Info', edit_submission_path(@submission) %> |
+<%= link_to 'Back', application_path(@submission.application_id) %> | 
+<%= link_to 'Delete', @submission, method: :delete, data: { confirm: 'Are you sure you want to delete this image?' } %>

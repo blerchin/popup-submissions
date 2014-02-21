@@ -1,7 +1,15 @@
-<%= form_for @submission, :html => {class: 'dropzone',
-																		id: 'submissions-uploader',
-																		enctype: "multipart/form-data"
+<%= form_for @submission, :html => 
+										{	:class => 'dropzone',
+					 						:id => 'submissions-uploader',
+											:enctype => "multipart/form-data"
 																		 } do |f| %>
+																		 
+																		 
+																		 
+	<% unless @application.nil? %>
+		<%= f.hidden_field :application_id, :value => @application.id %>
+		<%= f.hidden_field :artist_id, :value => @application.artist_id %>
+	<% end %>
 
   <% if @submission.errors.any? %>
     <div id="error_explanation">

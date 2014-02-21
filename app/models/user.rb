@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+	has_many :installations
+	has_many :applications
 
 	#before_save :encrypt_password
 	#validates_presence_of :password, :on => :create

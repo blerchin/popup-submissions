@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140218194318) do
+ActiveRecord::Schema.define(version: 20140221052518) do
+
+  create_table "applications", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "artist_id"
+    t.integer  "exhibition_id"
+  end
+
+  add_index "applications", ["artist_id"], name: "index_applications_on_artist_id"
+  add_index "applications", ["exhibition_id"], name: "index_applications_on_exhibition_id"
 
   create_table "artists", force: true do |t|
     t.string   "first_name"
@@ -27,6 +37,29 @@ ActiveRecord::Schema.define(version: 20140218194318) do
     t.datetime "created_at"
     t.datetime "modified_at"
     t.string   "access_token"
+    t.integer  "exhibition_id"
+  end
+
+  create_table "artists_tables", force: true do |t|
+    t.string "artists"
+  end
+
+  create_table "exhibitions", force: true do |t|
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.string   "name"
+    t.datetime "submission_start"
+    t.datetime "submission_end"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "application_contract"
+  end
+
+  create_table "installations", force: true do |t|
+    t.integer  "exhibition_id"
+    t.integer  "artist_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "submissions", force: true do |t|
@@ -36,9 +69,14 @@ ActiveRecord::Schema.define(version: 20140218194318) do
     t.integer "year"
     t.string  "medium"
     t.integer "price"
+    t.integer "exhibition_id"
+    t.integer "installation_id"
+    t.integer "application_id"
   end
 
+  add_index "submissions", ["application_id"], name: "index_submissions_on_application_id"
   add_index "submissions", ["artist_id"], name: "index_submissions_on_artist_id"
+  add_index "submissions", ["installation_id"], name: "index_submissions_on_installation_id"
 
   create_table "users", force: true do |t|
     t.string   "username"

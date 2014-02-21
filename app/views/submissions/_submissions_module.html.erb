@@ -1,0 +1,8 @@
+<% object.submissions.each do |submission| %>
+	<div class="submission">
+		<%= link_to submission do %>
+			<img src="<%= submission.slide.thumb %>" />
+			<p class="title"><%= submission.title %></p>
+		<% end %>
+	</div>
+<% end %>

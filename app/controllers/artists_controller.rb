@@ -1,8 +1,8 @@
 class ArtistsController < ApplicationController
   before_action :set_artist, only: [:show, :edit, :update, :destroy]
+	before_action :set_artists, only: [:index]
 	after_action :save_session_login, only: [:create]
 
-	before_action :set_artist, except: [:new, :create]
 	#before_action :artist_auth, except: [:new, :create]
 
   # GET /artists
@@ -15,7 +15,8 @@ class ArtistsController < ApplicationController
   # GET /artists/1
   # GET /artists/1.json
   def show
-  end
+		@exhibitions = Exhibition.open
+	end
 
   # GET /artists/new
   def new
@@ -34,7 +35,7 @@ class ArtistsController < ApplicationController
     respond_to do |format|
       if @artist.save
 				ArtistMailer.signup_email(@artist).deliver
-        format.html { redirect_to @artist, notice: 'Artist was successfully created.' }
+        format.html { redirect_to @artist, notice: 'Your data was saved.' }
         format.json { render action: 'show', status: :created, location: @artist }
       else
         format.html { render action: 'new' }
@@ -93,6 +94,10 @@ class ArtistsController < ApplicationController
 				authenticate
 				@artist = Artist.find(params[:id])
 			end
+		end
+		def set_artists
+			authenticate
+			@artists = Artist.all
 		end
 
   	def save_session_login

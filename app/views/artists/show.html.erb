@@ -12,7 +12,15 @@
 <div class="actions">
 	<%= button_to 'Edit Info', edit_artist_path(@artist) %>
 </div>
+<div class="exhibitions">
+	<h4>Open Exhibitions</h4>
+	<p>Click an exhibition to apply to it.</p>
+	<%= render "exhibitions/exhibitions_module" %>
+</div>
 
-<% @submissions = @artist.submissions %>
-<%= render template: 'submissions/index' %>
+<div class="applications">
+	<h4>Completed Applications</h4>
+	<%= render partial: "applications/applications_module",
+		:locals => { object: @artist } %>
+</div>
 

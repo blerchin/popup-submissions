@@ -21,3 +21,15 @@ module ApplicationHelper
 	end
 
 end
+
+class ActionView::Helpers::FormBuilder
+	include ActionView::Helpers::TagHelper
+	def control_label(*args)
+		args[1] ||= {}
+		args[1][:class] = "control-label"
+		label *args
+	end
+	def control_text_field(*args)
+		content_tag(:div, text_field(*args), class: "controls")
+	end
+end

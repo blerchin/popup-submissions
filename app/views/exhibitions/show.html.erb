@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @exhibition.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @exhibition.end_date %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @exhibition.name %>
+</p>
+
+<p>
+  <strong>Submission start:</strong>
+  <%= @exhibition.submission_start %>
+</p>
+
+<p>
+  <strong>Submission end:</strong>
+  <%= @exhibition.submission_end %>
+</p>
+
+<%= link_to 'Edit', edit_exhibition_path(@exhibition) %> |
+<%= link_to 'Back', exhibitions_path %>

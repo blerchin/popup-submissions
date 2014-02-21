@@ -1,0 +1,23 @@
+<h1>Now, add info for each piece.</h1>
+
+<%= form_for object do |application_form| %>
+	<div class="row">
+		<%= render "submissions/edit_toolbar" %>
+	</div>
+	<div class="row">
+		<% object.submissions.each do |submission| %>
+			<div class="span3 submission submission-<%=submission.id%> pull-left">
+				<img src = "<%= submission.slide.thumb %>" />
+				<% # doing it the Rails way: nested attrs %>
+				<%= application_form.fields_for :submissions, submission do |f| %>
+					<%= render "submissions/form_fields", :f => f  %>
+				<% end %>
+			</div>
+		<% end %>
+	</div>
+	<div class="row">
+		<%= render "submissions/edit_toolbar" %>
+	</div>
+<% end %>
+
+<br>

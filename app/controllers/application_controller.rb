@@ -24,6 +24,6 @@ class ApplicationController < ActionController::Base
 	end
 	def current_artist
 		@_current_artist ||= session[:current_artist_id] &&
-			Artist.find( session[:current_artist_id])
+			Artist.find_by_id( session[:current_artist_id])
 	end
 end

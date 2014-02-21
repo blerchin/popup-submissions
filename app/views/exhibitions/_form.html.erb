@@ -1,0 +1,37 @@
+<%= form_for(@exhibition) do |f| %>
+  <% if @exhibition.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@exhibition.errors.count, "error") %> prohibited this exhibition from being saved:</h2>
+
+      <ul>
+      <% @exhibition.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :start_date %><br>
+    <%= f.datetime_select :start_date %>
+  </div>
+  <div class="field">
+    <%= f.label :end_date %><br>
+    <%= f.datetime_select :end_date %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :submission_start %><br>
+    <%= f.datetime_select :submission_start %>
+  </div>
+  <div class="field">
+    <%= f.label :submission_end %><br>
+    <%= f.datetime_select :submission_end %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

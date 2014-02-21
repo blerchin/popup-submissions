@@ -1,10 +1,17 @@
 FullView::Application.routes.draw do
+  resources :installations
+
+  resources :artists
+
+  resources :exhibitions do
+		resources :artists, shallow: true
+		resources :submissions, shallow:true
+  	resources :applications, shallow: true
+	end
+
+  resources :applications
   resources :submissions
 
-  resources :artists do
-		resources :submissions
-	end
-	get 'artists/load/:access_token' => 'artists#load'
 	root :to => "artists#new"
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,0 +1,8 @@
+<% @exhibitions.each do |e| %>
+	<h4><strong><%= e.name %></strong></h4>
+	<p>deadline: 
+		<%= e.submission_end.strftime("%B %e, %Y")%></p>
+	<p><%= button_to "Apply", new_exhibition_application_path(e) %></p>
+<% end %>
+
+	

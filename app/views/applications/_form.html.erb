@@ -1,0 +1,24 @@
+<%= form_for(@application) do |f| %>
+  <% if @application.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@application.errors.count, "error") %> prohibited this application from being saved:</h2>
+
+      <ul>
+      <% @application.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+	<%= f.hidden_field :exhibition_id, 
+						:value => @exhibition.id %>
+	<%= f.hidden_field :artist_id, 
+						:value =>@artist.id %>
+
+	<p class="contract">
+		<%= @exhibition.application_contract %>
+	</p>
+  <div class="actions">
+    <%= f.submit "Apply" %>
+  </div>
+<% end %>

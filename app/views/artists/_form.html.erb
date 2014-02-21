@@ -1,4 +1,4 @@
-<%= form_for(@artist) do |f| %>
+<%= form_for(@artist, html: {class: "form-horizontal"} ) do |f| %>
   <% if @artist.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@artist.errors.count, "error") %> prohibited this artist from being saved:</h2>
@@ -10,40 +10,46 @@
       </ul>
     </div>
   <% end %>
-	<div class="form-section">
-		<%= f.label :first_name %>
-		<%= f.text_field :first_name %>
+	<div class="form-section control-group">
+		<%= f.control_label :first_name %>
+		<%= f.control_text_field :first_name %>
 	</div>
-	<div class="form-section">
-		<%= f.label :last_name %>
-		<%= f.text_field :last_name %>
+	<div class="form-section control-group">
+		<%= f.control_label :last_name %>
+		<%= f.control_text_field :last_name %>
 	</div>
-	<div class="form-section">
-		<%= f.label :email %>
-		<%= f.text_field :email %>
+	<div class="form-section control-group">
+		<%= f.control_label :email %>
+		<%= f.control_text_field :email %>
 	</div>
-	<div class="form-section">
-		<%= f.label "Address" %>
-		<%= f.text_field :contact_address_one %>
+	<div class="form-section control-group">
+		<%= f.control_label :phone %>
+		<%= f.control_text_field :phone %>
 	</div>
-	<div class="form-section">
-		<%= f.label "Address" %>
-		<%= f.text_field :contact_address_two %>
+	<div class="form-section control-group">
+		<%= f.control_label "Address" %>
+		<%= f.control_text_field :contact_address_one %>
 	</div>
-	<div class="form-section">
-		<%= f.label "City" %>
-		<%= f.text_field :contact_city %>
+	<div class="form-section control-group">
+		<%= f.control_label "Address" %>
+		<%= f.control_text_field :contact_address_two %>
 	</div>
-	<div class="form-section">
-		<%= f.label "State" %>
-		<%= f.text_field :contact_state %>
+	<div class="form-section control-group">
+		<%= f.control_label "City" %>
+		<%= f.control_text_field :contact_city %>
 	</div>
-	<div class="form-section">
-		<%= f.label "Zip Code" %>
-		<%= f.text_field :contact_postal %>
+	<div class="form-section control-group">
+		<%= f.control_label "State" %>
+		<%= f.control_text_field :contact_state %>
+	</div>
+	<div class="form-section control-group">
+		<%= f.control_label "Zip Code" %>
+		<%= f.control_text_field :contact_postal %>
 	</div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div class="actions control-group">
+		<div class="controls">
+    	<%= f.submit "Save Data" %>
+		</div>
   </div>
 <% end %>
