@@ -5,6 +5,9 @@ class Artist < ActiveRecord::Base
 	has_many :applications
 	has_many :installations
 
+	validates_presence_of :first_name, :last_name, :email, :phone
+	validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, on: :create }
+
 
 	def set_status_pending
 		self.status = "pending"

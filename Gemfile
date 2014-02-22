@@ -1,10 +1,12 @@
 source 'https://rubygems.org'
 
+ruby '1.9.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.1'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+#gem 'sqlite3'
+gem 'pg'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -36,7 +38,7 @@ end
  gem 'bcrypt-ruby', :require => "bcrypt"
 
 # Use unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
@@ -52,3 +54,7 @@ gem 'mini_magick'
 gem 'js-routes'
 gem 'pundit'
 
+gem 'unf'
+gem 'fog'
+
+gem 'rails_12factor', group: :production

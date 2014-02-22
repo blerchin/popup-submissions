@@ -3,10 +3,6 @@
 		<h3>Artist Details</h3>
 		<p id="notice"><%= notice %></p>
 		<p class="status"><strong>
-			<% apps = @artist.applications.length %>
-			<% if  apps > 0 %>
-				You've submitted <%=pluralize(apps, 'application')%>. If you're all done, you can close this page. We'll be in touch shortly once we have reviewed all applications.
-			<% end %>
 		</strong></p>
 		<p id="name"><strong>Name:</strong> <%=@artist.first_name %> <%= @artist.last_name %></p>
 		<p id="email"><strong>Email:</strong> <%=@artist.email %></p>
