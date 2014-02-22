@@ -3,6 +3,9 @@
 
 <p class="lead">We need to let you know about a few details.</p>
 
+<p class="contract">
+	<%=raw @exhibition.application_contract %>
+</p>
 <%= render 'form' %>
 
 <%= link_to 'Back', applications_path %>

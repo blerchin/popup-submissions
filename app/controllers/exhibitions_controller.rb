@@ -72,6 +72,6 @@ class ExhibitionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def exhibition_params
-      params.require(:exhibition).permit(:start_date, :end_date, :name, :submission_start, :submission_end)
+      params.require(:exhibition).permit(:start_date, :end_date, :name, :submission_start, :submission_end, :application_contract)
     end
 end

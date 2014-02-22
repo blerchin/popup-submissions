@@ -12,16 +12,16 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
     <%= f.label :start_date %><br>
     <%= f.datetime_select :start_date %>
   </div>
   <div class="field">
     <%= f.label :end_date %><br>
     <%= f.datetime_select :end_date %>
-  </div>
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
   </div>
   <div class="field">
     <%= f.label :submission_start %><br>
@@ -31,6 +31,9 @@
     <%= f.label :submission_end %><br>
     <%= f.datetime_select :submission_end %>
   </div>
+	<div class="field">
+		<%= f.label :application_contract %><br>
+		<%= f.text_area :application_contract %>
   <div class="actions">
     <%= f.submit %>
   </div>
