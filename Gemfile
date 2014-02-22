@@ -58,3 +58,4 @@ gem 'unf'
 gem 'fog'
 
 gem 'rails_12factor', group: :production
+gem 'newrelic_rpm'
