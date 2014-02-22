@@ -6,10 +6,9 @@ FullView::Application.initialize!
 
 ActionMailer::Base.delivery_method = :smtp
 ActionMailer::Base.smtp_settings = {
-								address: 							"smtp.gmail.com",
+								address: 							"smtp.mandrillapp.com",
 								port: 								"587",
-								user_name: 						"mhzmaster@gmail.com",
-								password: 						"Baruchlieb0724",
-								authentication: 			:plain,
-								enable_starttls_auto: true,
+								user_name: 						"app22431408@heroku.com",
+								password: 						"di2a4N9JtKeogX1uakkb4g",
+								authentication: 			:plain
 }
