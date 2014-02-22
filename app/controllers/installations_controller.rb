@@ -1,32 +1,36 @@
 class InstallationsController < ApplicationController
   before_action :set_installation, only: [:show, :edit, :update, :destroy]
 
-	authenticate
 
 
   # GET /installations
   # GET /installations.json
   def index
+		authenticate
     @installations = Installation.all
   end
 
   # GET /installations/1
   # GET /installations/1.json
   def show
+		authenticate
   end
 
   # GET /installations/new
   def new
+		authenticate
     @installation = Installation.new
   end
 
   # GET /installations/1/edit
   def edit
+		authenticate
   end
 
   # POST /installations
   # POST /installations.json
   def create
+		authenticate
     @installation = Installation.new(installation_params)
 
     respond_to do |format|
@@ -43,6 +47,7 @@ class InstallationsController < ApplicationController
   # PATCH/PUT /installations/1
   # PATCH/PUT /installations/1.json
   def update
+		authenticate
     respond_to do |format|
       if @installation.update(installation_params)
         format.html { redirect_to @installation, notice: 'Installation was successfully updated.' }
