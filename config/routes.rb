@@ -3,13 +3,11 @@ FullView::Application.routes.draw do
 
   resources :artists
 
+  resources :applications
   resources :exhibitions do
-		resources :artists, shallow: true
-		resources :submissions, shallow:true
   	resources :applications, shallow: true
 	end
 
-  resources :applications
   resources :submissions
 
 	root :to => "artists#new"

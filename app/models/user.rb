@@ -23,5 +23,9 @@ class User < ActiveRecord::Base
 			self.password_hash = BCrypt::Engine.hash_secret(password, password_salt)
 		end
 	end
+
+	def admin?
+		admin
+	end
 		
 end

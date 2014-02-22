@@ -50,3 +50,5 @@ gem 'less-rails'
 gem 'twitter-bootstrap-rails'
 gem 'mini_magick'
 gem 'js-routes'
+gem 'pundit'
+

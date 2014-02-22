@@ -1,26 +1,37 @@
-<h2>Artist Details</h2>
-<p id="notice"><%= notice %></p>
-<p id="name">Name: <%=@artist.first_name %> <%= @artist.last_name %></p>
-<p id="email">Email: <%=@artist.email %></p>
-<div id="address">
-	<p>Contact Address: </p>
-	<%=@artist.contact_address_one %><br />
-	<%=@artist.contact_address_two %><br />
-	<%=@artist.contact_city %>, <%= @artist.contact_state %> 
-	<%=@artist.contact_postal%><br />
+<div class="row">
+	<div class="artist span4">
+		<h3>Artist Details</h3>
+		<p id="notice"><%= notice %></p>
+		<p class="status"><strong>
+			<% apps = @artist.applications.length %>
+			<% if  apps > 0 %>
+				You've submitted <%=pluralize(apps, 'application')%>. If you're all done, you can close this page. We'll be in touch shortly once we have reviewed all applications.
+			<% end %>
+		</strong></p>
+		<p id="name"><strong>Name:</strong> <%=@artist.first_name %> <%= @artist.last_name %></p>
+		<p id="email"><strong>Email:</strong> <%=@artist.email %></p>
+		<div id="address">
+			<p><strong>Contact Address: </strong></p>
+			<%=@artist.contact_address_one %><br />
+			<%=@artist.contact_address_two %><br />
+			<%=@artist.contact_city %>, <%= @artist.contact_state %> 
+			<%=@artist.contact_postal%><br />
+		</div>
+		<div class="actions">
+			<%= button_to 'Edit Info', edit_artist_path(@artist) %>
+		</div>
+	</div><!-- .artist -->
+	<div class="exhibitions span6">
+		<h3>Open Exhibitions</h3>
+		<p>Click an exhibition to apply to it.</p>
+		<%= render "exhibitions/exhibitions_module" %>
+	</div>
 </div>
-<div class="actions">
-	<%= button_to 'Edit Info', edit_artist_path(@artist) %>
-</div>
-<div class="exhibitions">
-	<h4>Open Exhibitions</h4>
-	<p>Click an exhibition to apply to it.</p>
-	<%= render "exhibitions/exhibitions_module" %>
-</div>
-
-<div class="applications">
-	<h4>Completed Applications</h4>
-	<%= render partial: "applications/applications_module",
-		:locals => { object: @artist } %>
+<div class="row">
+	<div class="applications span12">
+		<h3>Completed Applications</h3>
+		<%= render partial: "applications/applications_module",
+			:locals => { object: @artist } %>
+	</div>
 </div>
 

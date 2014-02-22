@@ -1,34 +1,37 @@
 <p id="notice"><%= notice %></p>
-
-<p class="lead">OK, now we need you to upload images of your work. These images should be representative of the body of work you wish to display. However, this doesn't need to be a complete listing. We will review up to 10 images.</p>
-<p>
-  <strong>Exhibition:</strong>
-  <%= @application.exhibition.name %>
-</p>
-
-<p>
-  <strong>Artist:</strong>
-  <%= @application.artist.first_name %> 
-	<%= @application.artist.last_name %>
-</p>
-
-<%= render 'submissions/uploader' %>
-
-
-<%= link_to 'Back', artist_path(@artist) %>
-<%= button_to "Save Images", edit_application_path(@application) %>
 <div class="row">
-	<h3>Uploaded Images</h3>
-	<p>Here is the work you've uploaded so far. You may upload more images using the box above, or add more information about the work. Click an image to view large or delete it.</p>
-	<%= button_to "Edit Image Info", edit_application_path(@application) %>
-	<div class="uploaded-images">
-		<%= render partial: 'submissions/submissions_module', locals: { 
-						:object => @application	} %>
-	</div>
-</div>
+	<div class="uploader span6">
+		<p>Use this page to upload images of your work. These images should be representative of the body of work you wish to display. However, this doesn't need to be a complete listing. We will review up to 10 images.</p>
+		<p>
+			<strong>Exhibition:</strong>
+			<%= @application.exhibition.name %>
+		</p>
 
-<div class="row actions">
-	<%= link_to "Finish Application", @artist, 
-		:class => "btn btn-large btn-primary" %>
+		<p>
+			<strong>Artist:</strong>
+			<%= @application.artist.first_name %> 
+			<%= @application.artist.last_name %>
+		</p>
+
+		<%= render 'submissions/uploader' %>
+
+
+		<%= button_to "Save Images", edit_application_path(@application), id: 'save-images'  %>
+	</div>
+	<div class="uploaded span5">
+		<h3>Uploaded Images</h3>
+		<p>Here is the work you've uploaded so far. Click <strong>Save Images</strong> below the uploader box to update this list. You may upload more images, or add more information about the work. Click an image to view large or delete it from your app.</p> 
+		<%= button_to "Edit Image Info", edit_application_path(@application) %>
+		<div class="uploaded-images">
+			<%= render partial: 'submissions/submissions_module', locals: { 
+							:object => @application	} %>
+		</div>
+
+	</div>
+	<div class="span4 actions">
+		<%= link_to 'Back', artist_path(@artist) %>
+		<%= link_to "Finish Application", @artist, 
+			:class => "btn btn-large btn-primary" %>
+	</div>
 </div>
 

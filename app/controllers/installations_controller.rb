@@ -1,5 +1,9 @@
 class InstallationsController < ApplicationController
   before_action :set_installation, only: [:show, :edit, :update, :destroy]
+	after_action :verify_authorized
+
+	authenticate
+
 
   # GET /installations
   # GET /installations.json

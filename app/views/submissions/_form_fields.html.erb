@@ -6,4 +6,7 @@
 <%= f.label :medium %>
 <%= f.text_field :medium %>
 <%= f.label "Estimated Price" %>
-<%= f.text_field :price %>
+<div class="input-prepend">
+	<span class="add-on">$</span>
+	<%= f.text_field :price %>
+</div>

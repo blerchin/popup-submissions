@@ -1,14 +1,15 @@
 class ArtistsController < ApplicationController
+	# authorize after artist login data has been processed
   before_action :set_artist, only: [:show, :edit, :update, :destroy]
-	before_action :set_artists, only: [:index]
+	#before_action :set_artists, only: [:index]
 	after_action :save_session_login, only: [:create]
 
-	#before_action :artist_auth, except: [:new, :create]
 
   # GET /artists
   # GET /artists.json
   def index
     @artists = Artist.all
+		authenticate
   end
 	
 
@@ -30,6 +31,7 @@ class ArtistsController < ApplicationController
   # POST /artists
   # POST /artists.json
   def create
+		logger.info artist_params
     @artist = Artist.new(artist_params)
 
     respond_to do |format|
@@ -88,16 +90,11 @@ class ArtistsController < ApplicationController
 											:access_token => params[:access_token],
 											:id => params[:id]).take
 				session[:current_artist_id] = @artist.id
+			else
+				@artist = Artist.find(params[:id])
+				authorize(@artist.id)
 			end
 
-			unless params[:id] && params[:id].to_i == @artist.try(:id)
-				authenticate
-				@artist = Artist.find(params[:id])
-			end
-		end
-		def set_artists
-			authenticate
-			@artists = Artist.all
 		end
 
   	def save_session_login

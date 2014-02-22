@@ -5,6 +5,7 @@ class SubmissionsController < ApplicationController
   # GET /submissions
   # GET /submissions.json
   def index
+		authenticate
 		render 'bulk_edit'
   end
 
@@ -34,7 +35,7 @@ class SubmissionsController < ApplicationController
 			if @submission.save
 				format.json { render json: @submission, status: :ok}
 			else
-				format.json { render json: @submission.errors, status: 422}
+				format.json { render json: @submission.errors[:slide], status: 422}
 			end
 		end
   end
@@ -68,19 +69,12 @@ class SubmissionsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_submission
 			@submission = Submission.find(params[:id])
-			if !@artist || @submission.artist_id != @artist.id
-				authenticate
-			end
+			authorize(@submission.artist_id)
+
     end
 
 		def set_artist
 			@artist = params[:artist_id] ? Artist.find(params[:artist_id]) : current_artist
-			if @artist != current_artist
-				authenticate
-			end
-			if !@artist
-				redirect_to new_artist_url 
-			end
 		end
 
     # Never trust parameters from the scary internet, only allow the white list through.

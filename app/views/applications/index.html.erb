@@ -4,7 +4,7 @@
   <thead>
     <tr>
       <th>Exhibition</th>
-      <th>Artst</th>
+      <th>Artist</th>
       <th></th>
       <th></th>
       <th></th>
@@ -14,8 +14,10 @@
   <tbody>
     <% @applications.each do |application| %>
       <tr>
-        <td><%= application.exhibition %></td>
-        <td><%= application.artst %></td>
+        <td><%= application.exhibition.try(:title) %></td>
+				<td><%= application.artist.try(:first_name) %>
+						<%= application.artist.try(:last_name) %>
+				</td>
         <td><%= link_to 'Show', application %></td>
         <td><%= link_to 'Edit', edit_application_path(application) %></td>
         <td><%= link_to 'Destroy', application, method: :delete, data: { confirm: 'Are you sure?' } %></td>

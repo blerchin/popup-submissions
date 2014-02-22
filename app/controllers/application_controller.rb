@@ -6,13 +6,24 @@ class ApplicationController < ActionController::Base
 	helper_method :current_user
 	helper_method :is_admin?
 
-	def authenticate
-		if user = authenticate_with_http_basic do |u, p|
+	def get_user
+		authenticate_with_http_basic do |u, p|
 				User.authenticate(u, p)
-			end
-			@_current_user = user
+		end
+	end
+
+	def authenticate
+		if user = get_user
+			user
 		else
 			request_http_basic_authentication
+		end
+	end
+	def authorize(authorized_artist_id)
+		unless authorized_artist_id && 
+					 current_artist &&
+						current_artist.id == authorized_artist_id
+			authenticate
 		end
 	end
 	def is_admin?
@@ -20,7 +31,7 @@ class ApplicationController < ActionController::Base
 	end
 
 	def current_user
-		@_current_user || nil
+		get_user
 	end
 	def current_artist
 		@_current_artist ||= session[:current_artist_id] &&

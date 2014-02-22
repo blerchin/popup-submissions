@@ -4,14 +4,15 @@ class ApplicationsController < ApplicationController
   # GET /applications
   # GET /applications.json
   def index
+		authenticate
     @applications = Application.all
   end
 
   # GET /applications/1
   # GET /applications/1.json
   def show
-		@artist = current_artist
 		@submission = Submission.new
+		@artist = current_artist
   end
 
   # GET /applications/new
@@ -69,6 +70,7 @@ class ApplicationsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_application
       @application = Application.find(params[:id])
+			authorize(@application.artist_id)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

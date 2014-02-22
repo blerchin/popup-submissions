@@ -1,3 +1,20 @@
+<% apps = object.applications.length %>
+<% if apps == 0 %>
+	<p class="lead">
+		You haven't started any applications yet. Click <strong>Apply</strong> under one of the Open Exhibitions listed above to get started.
+	</p>
+<% else %>
+	<p>
+	Excellent, you've submitted <%=pluralize(apps, 'application')%>.
+	</p>
+	<p>
+		You can click on your application in the list below to edit an application you've started. Otherwise, you can close this page. We'll be in touch shortly once we have reviewed all applications.
+	</p>
+<% end %>
+
+
 <% object.applications.each do |app| %>
-	<%= link_to app.exhibition.name, app %>
+	<p class="lead">
+	<%= link_to "#{app.exhibition.name} Application", app %>
+	</p>
 <% end %>

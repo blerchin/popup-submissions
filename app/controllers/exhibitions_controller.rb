@@ -1,15 +1,18 @@
 class ExhibitionsController < ApplicationController
   before_action :set_exhibition, only: [:show, :edit, :update, :destroy]
 
+
   # GET /exhibitions
   # GET /exhibitions.json
   def index
+		authenticate
     @exhibitions = Exhibition.all
   end
 
   # GET /exhibitions/1
   # GET /exhibitions/1.json
   def show
+		authenticate
   end
 
   # GET /exhibitions/new
