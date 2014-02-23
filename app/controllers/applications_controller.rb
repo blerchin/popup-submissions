@@ -12,7 +12,7 @@ class ApplicationsController < ApplicationController
   # GET /applications/1.json
   def show
 		@submission = Submission.new
-		@artist = current_artist
+		@artist = current_artist || @application.artist
   end
 
   # GET /applications/new
