@@ -1,6 +1,8 @@
+<% has_images = @application.submissions.count > 0 %>
 <p id="notice"><%= notice %></p>
 <div class="row">
 	<div class="uploader span6">
+		<h3>Add Images</h3>
 		<p>Use this page to upload images of your work. These images should be representative of the body of work you wish to display. However, this doesn't need to be a complete listing. We will review up to 10 images.</p>
 		<p>
 			<strong>Exhibition:</strong>
@@ -18,8 +20,10 @@
 
 		<%= button_to "Save Images", edit_application_path(@application), id: 'save-images'  %>
 	</div>
-	<div class="uploaded span5">
-		<h3>Uploaded Images</h3>
+	<div class="uploaded span5 
+		<%= "has-images" if @application.submissions.count > 0 %>
+		">
+		<h3>Review Images</h3>
 		<p>Here is the work you've uploaded so far. Click <strong>Save Images</strong> below the uploader box to update this list. You may upload more images, or add more information about the work. Click an image to view large or delete it from your app.</p> 
 		<%= button_to "Edit Image Info", edit_application_path(@application) %>
 		<div class="uploaded-images">
@@ -27,11 +31,12 @@
 							:object => @application	} %>
 		</div>
 
+		<div class="span4 actions
+			<%= "has-images" if has_images %>">
+			<%= link_to 'Back', artist_path(@artist) %>
+			<%= link_to "Finish Application", @artist, 
+				:class => "btn btn-large btn-primary #{ "disabled" unless has_images }" %>
+		</div>
 	</div>
-	<div class="span4 actions">
-		<%= link_to 'Back', artist_path(@artist) %>
-		<%= link_to "Finish Application", @artist, 
-			:class => "btn btn-large btn-primary" %>
 	</div>
-</div>
 

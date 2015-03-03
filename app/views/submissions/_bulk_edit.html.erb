@@ -2,21 +2,27 @@
 
 <%= form_for object do |application_form| %>
 	<div class="row">
-		<%= render "submissions/edit_toolbar" %>
-	</div>
-	<div class="row">
 		<% object.submissions.each do |submission| %>
 			<div class="span3 submission submission-<%=submission.id%> pull-left">
 				<img src = "<%= submission.slide.thumb %>" />
-				<% # doing it the Rails way: nested attrs %>
-				<%= application_form.fields_for :submissions, submission do |f| %>
-					<%= render "submissions/form_fields", :f => f  %>
-				<% end %>
+				<ul class="actions">
+					<li><%= link_to 'Show', submission %>
+					<li><%= link_to 'Edit', edit_submission_path(submission) %>
+					<li><%= link_to 'Remove', submission, method: :delete, data: {confirm: 'Are you sure?' } %> 
+				</ul>
+				<div class="form-group">
+					<% # doing it the Rails way: nested attrs %>
+					<%= application_form.fields_for :submissions, submission do |f| %>
+						<%= render "submissions/form_fields", :f => f  %>
+					<% end %>
+				</div>
 			</div>
 		<% end %>
 	</div>
 	<div class="row">
-		<%= render "submissions/edit_toolbar" %>
+		<div class="span12">
+			<%= render "submissions/edit_toolbar" %>
+		</div>
 	</div>
 <% end %>
 
