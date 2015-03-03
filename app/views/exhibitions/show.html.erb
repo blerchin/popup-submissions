@@ -28,6 +28,12 @@
 	<strong>Contract:</strong>
 	<%=raw @exhibition.application_contract %>
 </p>
+<div class="applications">
+	<% @exhibition.applications.each do |app| %>
+		<%= render partial: "applications/review", locals: { app: app } %>
+
+	<% end %>
+</div>
 
 <%= link_to 'Edit', edit_exhibition_path(@exhibition) %> |
 <%= link_to 'Back', exhibitions_path %>

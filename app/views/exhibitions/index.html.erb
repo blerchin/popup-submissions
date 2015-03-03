@@ -3,11 +3,7 @@
 <table>
   <thead>
     <tr>
-      <th>Start date</th>
-      <th>End date</th>
       <th>Name</th>
-      <th>Submission start</th>
-      <th>Submission end</th>
       <th></th>
       <th></th>
       <th></th>
@@ -17,11 +13,7 @@
   <tbody>
     <% @exhibitions.each do |exhibition| %>
       <tr>
-        <td><%= exhibition.start_date %></td>
-        <td><%= exhibition.end_date %></td>
         <td><%= exhibition.name %></td>
-        <td><%= exhibition.submission_start %></td>
-        <td><%= exhibition.submission_end %></td>
         <td><%= link_to 'Show', exhibition %></td>
         <td><%= link_to 'Edit', edit_exhibition_path(exhibition) %></td>
         <td><%= link_to 'Destroy', exhibition, method: :delete, data: { confirm: 'Are you sure?' } %></td>

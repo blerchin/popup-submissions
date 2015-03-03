@@ -1,0 +1,7 @@
+		<div class="application">
+			<h4><%= app.artist.try(:full_name) %></h4>
+			<div class="submissions">
+				<%= render partial: "submissions/submissions_module", :locals => { :object => app } %>
+			</div>
+
+		</div>

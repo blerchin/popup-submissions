@@ -11,8 +11,6 @@ $ ->
 		@
 		)(-> $('a#save-images'))
 
-	console.log "running js"
-	console.log $('.dropzone')
 	saveButton.disable()
 
 	Dropzone.options.submissionsUploader =

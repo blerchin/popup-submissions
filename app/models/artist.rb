@@ -9,6 +9,9 @@ class Artist < ActiveRecord::Base
 	validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, on: :create }
 
 
+	def full_name
+		"#{first_name} #{last_name}"
+	end
 	def set_status_pending
 		self.status = "pending"
 	end
