@@ -1,7 +1,18 @@
-<h1>Submitting to the next popUp?</h1>
+<h1>Submitting work for the next popUp?</h1>
 <div class="row">
-	<div class="span6">
-		<p class="lead">First we'll need to know a bit about you.</p>
+	<div class="span7">
+<% if @exhibition.nil? %>
+	<h3>No exhibitions are open for submission at this time. Please check our website for more info.</h3>
+<% else %>
+	<h3>We are currently accepting applications for:</h3>
+	<h4><%= @exhibition.name %></h4>
+	<b>submissions due <%= @exhibition.submission_end.strftime("%b %-d") %></b>
+	<p>show open from <%= @exhibition.start_date.strftime("%b %-d") %> 
+	to <%= @exhibition.end_date.strftime("%b %-d") %>.</p>
+	<%=raw @exhibition.application_contract %>
+<% end %>
+
+<h3>Ready to apply? First we'll need to know a bit about you.</h3>
 		<p>Once you start your application, we'll send you a link by email which will allow you to return and revise your submission anytime before the deadline.
 	</div>
 </div>
